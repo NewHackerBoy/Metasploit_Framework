@@ -11,7 +11,7 @@ Metasploit_Framework v5.0.53-Dev For Termux
 
  'apt install git'
 
- 'git clone https://github.com/NewHackerBoy/Metasploit_Framework.git
+ 'git clone https://github.com/NewHackerBoy/Metasploit_Framework.git'
 
 
 # Now Open Folder and Give Permission.
