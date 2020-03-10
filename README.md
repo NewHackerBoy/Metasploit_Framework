@@ -18,12 +18,12 @@ Metasploit_Framework v5.0.53-Dev For Termux
 
  'cd Metasploit_Framework'
 
- 'chmod +x *'
+ 'chmod +x Install.sh'
 
 
 # Now Run The Bash Typing 
 
- 'bash metasploit.sh'
+ 'bash Install.sh'
 
 
 # After Installation Completed Close Termux Then Re-Open Termux
