@@ -26,7 +26,7 @@ Metasploit_Framework v5.0.53-Dev For Termux
  'bash metasploit.sh'
 
 
-** After Installation Completed Close Termux Then Re-Open Termux **
+# After Installation Completed Close Termux Then Re-Open Termux **
 
  Now Use Below Command To Run Metasploit_Framework...
 
