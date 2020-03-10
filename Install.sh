@@ -12,48 +12,48 @@ stty -echo -icanon time 0 min 0 intr undef quit undef susp undef
 trap "tput reset; tput cnorm; exit" 2
 
 if [ "$(id -u)" = "0" ]; then
-	echo "[!] Do not install Termux packages as root :)"
+	echo "[!] Do Not Install Termux Packages As Root :)"
 	exit 1
 fi
 clear
 echo;
-(apt update;apt install wget busybox -y;wget -O $TMPDIR/metasploit.txt https://raw.githubusercontent.com/remo7777/Termux-Metasploit/master/logo.txt) &> /dev/null
+(apt update;apt install wget busybox -y;wget -O $TMPDIR/metasploit.txt https://raw.githubusercontent.com/NewHackerBoy/Metasploit_Framework/master/Logo.txt) &> /dev/null
 cat $TMPDIR/metasploit.txt;
 echo;
-echo "Dependency packages install"
+echo "Dependency Packages Install"
 sleep 5;
 apt upgrade -y;apt install apr apr-util autoconf bison clang coreutils curl findutils git libffi libgmp libiconv libpcap libsqlite libtool libxml2 libxslt make ncurses ncurses ncurses-utils openssl pkg-config postgresql readline resolv-conf ruby tar termux-elf-cleaner termux-tools unzip wget zip zlib -y;
-echo "[*] Downloading Metasploit Framework..."
+echo "[*] Downloading Metasploit_Framework..."
 mkdir -p "$TMPDIR"
 rm -f "$TMPDIR/metasploit-$MSF_VERSION.tar.gz"
 curl --fail --retry 3 --location --output "$TMPDIR/metasploit-$MSF_VERSION.tar.gz" \
 	"https://github.com/rapid7/metasploit-framework/archive/$MSF_VERSION.tar.gz"
 
-echo "[*] Removing previous version Metasploit Framework..."
+echo "[*] Removing Previous Version Metasploit_Framework..."
 rm -rf "$PREFIX"/opt/metasploit-framework
 
-echo "[*] Extracting new version of Metasploit Framework..."
+echo "[*] Extracting New Version Of Metasploit_Framework..."
 mkdir -p "$PREFIX"/opt/metasploit-framework
 tar zxf "$TMPDIR/metasploit-$MSF_VERSION.tar.gz" --strip-components=1 \
 	-C "$PREFIX"/opt/metasploit-framework
 
-echo "[*] Installing 'rubygems-update' if necessary..."
+echo "[*] Installing 'Ruby_Gems_Update' If Necessary..."
 if [ "$(gem list -i rubygems-update 2>/dev/null)" = "false" ]; then
 	gem install --no-document --verbose rubygems-update
 fi
 
-echo "[*] Updating Ruby gems..."
+echo "[*] Updating Ruby_Gems..."
 update_rubygems
 
-echo "[*] Installing 'bundler:1.17.3'..."
+echo "[*] Installing 'Bundler :- 1.17.3'..."
 gem install --no-document --verbose bundler:1.17.3
 
-echo "[*] Installing Metasploit dependencies (may take long time)..."
+echo "[*] Installing Metasploit Dependencies (May Take Long Time)..."
 cd "$PREFIX"/opt/metasploit-framework
 bundle config build.nokogiri --use-system-libraries
 bundle install --jobs=2 --verbose
 
-echo "[*] Running fixes..."
+echo "[*] Running Fixes..."
 sed -i "s@/etc/resolv.conf@$PREFIX/etc/resolv.conf@g" "$PREFIX"/opt/metasploit-framework/lib/net/dns/resolver.rb
 find "$PREFIX"/opt/metasploit-framework -type f -executable -print0 | xargs -0 -r termux-fix-shebang
 find "$PREFIX"/lib/ruby/gems -type f -iname \*.so -print0 | xargs -0 -r termux-elf-cleaner
@@ -94,6 +94,8 @@ for i in msfd msfrpc msfrpcd msfvenom; do
 	ln -sfr "$PREFIX"/bin/msfconsole "$PREFIX"/bin/$i
 done
 
-echo "[*] Metasploit Framework installation finished."
+echo "[*] Metasploit_Framework Installation Finished..."
+echo "[*] Now You Can Run Via Msfconsole Command."
+echo "[*] Or,  You Can Run Via ./Msfconsole Command."
 
 exit 0
